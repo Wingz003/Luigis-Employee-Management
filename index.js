@@ -33,7 +33,7 @@ async function updateRole() {
 
  const newChoices = rows.map(employee => ({name:employee.name, value:employee}))  
 
-  console.log(newChoices);
+  console.table(newChoices);
   
   
   const {choice} = await inquirer.prompt([{
@@ -47,4 +47,5 @@ async function updateRole() {
 
     console.log(choice);
 
+    //Make a new query. Based on what ever choice i made, i can update the database or delete from the database
 }
