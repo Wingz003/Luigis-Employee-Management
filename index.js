@@ -4,7 +4,7 @@ const mysql = require("mysql2/promise");
 startProgram();
 
 async function startProgram() {
-    const {choice} = await inquirer.prompt([{
+    const { choice } = await inquirer.prompt([{
         name: "choice",
         type: "list",
         message: "what do you want to do?",
@@ -44,80 +44,104 @@ async function startProgram() {
         case "update role":
             updateRole()
             break;
-    
+
         default:
             break;
     }
-    
+
 }
-   
+
 async function updateRole() {
-  // create the connection
-  const connection = await mysql.createConnection({host:'localhost', user: 'root', database: 'employee_db'});
-  
-  const [rows, fields] = await connection.execute("select * from employee");
+    // create the connection
+    const connection = await mysql.createConnection({ host: 'localhost', user: 'root', database: 'employee_db' });
 
- const newChoices = rows.map(employee => ({name:employee.name, value:employee}))  
+    const [rows, fields] = await connection.execute("select * from employee");
 
-  console.table(newChoices);
-  
-  
-  const {choice} = await inquirer.prompt([{
-    name: "choice",
-    type: "list",
-    message: "Which employee role do you want to update?",
-    choices: newChoices,
+    const newChoices = rows.map(employee => ({ name: employee.first_name, value: employee.role_id }))
+
+    console.table(newChoices);
 
 
-}])
+    
 
-    console.log(choice);
+    
 
-    //Make a new query. Based on what ever choice i made, i can update the database or delete from the database
+    const { employeeToChange, choice } = await inquirer.prompt([
+        {
+            name: "employeeToChange",
+            type: "list",
+            message: "Which employee role do you want to update?",
+            choices: newChoices
+        },
+        {
+            name: "choice",
+            type: "input",
+            message: "What is the new role id?"
+        }
+    ])
+    await connection.execute(`UPDATE employee SET role_id = ${choice} WHERE role_id = ${employeeToChange}`);
+    viewEmployees();
+    
 }
 
 async function viewDepartments() {
-    const connection = await mysql.createConnection({host:'localhost', user: 'root', database: 'employee_db'});
-  
-  const [rows, fields] = await connection.execute("select * from department");
+    const connection = await mysql.createConnection({ host: 'localhost', user: 'root', database: 'employee_db' });
 
- 
+    const [rows, fields] = await connection.execute("select * from department");
 
-  console.table(rows);
+
+
+    console.table(rows);
 }
 
 async function viewRoles() {
-    const connection = await mysql.createConnection({host:'localhost', user: 'root', database: 'employee_db'});
-    
+    const connection = await mysql.createConnection({ host: 'localhost', user: 'root', database: 'employee_db' });
+
     const [rows, fields] = await connection.execute("select * from roles");
-  
-   
-  
+
+
+
     console.table(rows);
 }
 
 async function viewEmployees() {
-    const connection = await mysql.createConnection({host:'localhost', user: 'root', database: 'employee_db'});
-    
+    const connection = await mysql.createConnection({ host: 'localhost', user: 'root', database: 'employee_db' });
+
     const [rows, fields] = await connection.execute("select * from employee");
 
     console.table(rows);
-  
+
 }
 
-async function addDepartment() {
-    const connection = await mysql.createConnection({host:'localhost', user: 'root', database: 'employee_db'});
-    const {newDepartment} = await inquirer.prompt([{
+async function addRole() {
+    const connection = await mysql.createConnection({ host: 'localhost', user: 'root', database: 'employee_db' });
+    const { newDepartment } = await inquirer.prompt([{
         name: "newDepartment",
         type: "input",
         message: "What department would like to add?",
-        
-        
-    }]) 
-    
-    const [rows, fields] = await connection.execute(`INSERT INTO department (id, name) VALUES ("${newDepartment}")`);
-    
-    
-    console.table(rows);
-    
+
+
+    }])
+
+    const [rows, fields] = await connection.execute(`INSERT INTO department (name) VALUES ("${newDepartment}")`);
+
+    viewDepartments();
+
+
+}
+async function addDepartment() {
+    const connection = await mysql.createConnection({ host: 'localhost', user: 'root', database: 'employee_db' });
+    const { newDepartment } = await inquirer.prompt([{
+        name: "newDepartment",
+        type: "input",
+        message: "What department would like to add?",
+
+
+    }])
+
+    const [rows, fields] = await connection.execute(`INSERT INTO department (name) VALUES ("${newDepartment}")`);
+
+    viewDepartments();
+
+
 }

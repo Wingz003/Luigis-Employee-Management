@@ -35,6 +35,7 @@ CREATE TABLE employee(
 INSERT INTO department (id, name) VALUES (1, "a");
 INSERT INTO department (id, name) VALUES (2, "b");
 INSERT INTO department (id, name) VALUES (3, "c");
+
 INSERT INTO roles (id, title, salary, department_id) VALUES (1, "engineer", 75000, 3);
 INSERT INTO roles (id, title, salary, department_id) VALUES (2, "intern", 35000, 3);
 
