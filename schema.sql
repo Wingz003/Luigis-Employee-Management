@@ -32,11 +32,14 @@ CREATE TABLE employee(
 
 
 
-INSERT INTO department (id, name) VALUES (1, "a");
-INSERT INTO department (id, name) VALUES (2, "b");
-INSERT INTO department (id, name) VALUES (3, "c");
+INSERT INTO department (id, name) VALUES (1, "engineering dept");
+INSERT INTO department (id, name) VALUES (2, "training dept");
+INSERT INTO department (id, name) VALUES (3, "science dept");
 
 INSERT INTO roles (id, title, salary, department_id) VALUES (1, "engineer", 75000, 3);
 INSERT INTO roles (id, title, salary, department_id) VALUES (2, "intern", 35000, 3);
+INSERT INTO roles (id, title, salary, department_id) VALUES (3, "scientist", 70000, 1);
 
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id) values (1, "Jason", "Day", 1, NULL);
+INSERT INTO employee (id, first_name, last_name, role_id, manager_id) values (2, "Luigi", "Santiago", 2, NULL);
+INSERT INTO employee (id, first_name, last_name, role_id, manager_id) values (3, "Keyla", "Fink", 3, NULL);
