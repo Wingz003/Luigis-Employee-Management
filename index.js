@@ -146,35 +146,35 @@ async function viewEmployees() {
 async function addRole() {
     const connection = await mysql.createConnection({ host: 'localhost', user: 'root', database: 'employee_db' });
 
-  
-   
-    
 
-        const { newTitle, newSalary, newDeptId } = await inquirer.prompt([
-            {
-                name: "newTitle",
-                type: "input",
-                message: "Which title would you like to add?",
-            },
-            {
-                name: "newSalary",
-                type: "input",
-                message: "What salary would you like?",
-            },
-            {
-                name: "newDeptId",
-                type: "input",
-                message: "Which department id number would like to add?",
-            }
-            
-        ])
-        
-        await connection.execute(`INSERT INTO roles (title, salary, department_id) VALUES ("${newTitle}", ${newSalary}, ${newDeptId})`);
-        const [rows, fields] = await connection.execute("SELECT * FROM roles;");
-        console.table(rows);
-        
-        viewRoles();
-        console.log("----------------------");
+
+
+
+    const { newTitle, newSalary, newDeptId } = await inquirer.prompt([
+        {
+            name: "newTitle",
+            type: "input",
+            message: "Which title would you like to add?",
+        },
+        {
+            name: "newSalary",
+            type: "input",
+            message: "What salary would you like?",
+        },
+        {
+            name: "newDeptId",
+            type: "input",
+            message: "Which department id number would like to add?",
+        }
+
+    ])
+
+    await connection.execute(`INSERT INTO roles (title, salary, department_id) VALUES ("${newTitle}", ${newSalary}, ${newDeptId})`);
+    const [rows, fields] = await connection.execute("SELECT * FROM roles;");
+    console.table(rows);
+
+    viewRoles();
+    console.log("----------------------");
     startProgram();
 
 }
@@ -227,5 +227,6 @@ async function addEmployee() {
     const [rows, fields] = await connection.execute(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("${newFirstName}", "${newLastName}", ${newRole}, ${newManagerId})`);
 
     viewEmployees();
+    console.log("----------------------");
     startProgram();
 }
