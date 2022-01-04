@@ -173,7 +173,7 @@ async function addRole() {
     const [rows, fields] = await connection.execute("SELECT * FROM roles;");
     console.table(rows);
 
-    viewRoles();
+    
     console.log("----------------------");
     startProgram();
 
@@ -192,7 +192,7 @@ async function addDepartment() {
 
     console.table(rows);
 
-    viewDepartments();
+    
     console.log("----------------------");
     startProgram();
 
@@ -226,7 +226,7 @@ async function addEmployee() {
 
     const [rows, fields] = await connection.execute(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("${newFirstName}", "${newLastName}", ${newRole}, ${newManagerId})`);
 
-    viewEmployees();
+    
     console.log("----------------------");
     startProgram();
 }
