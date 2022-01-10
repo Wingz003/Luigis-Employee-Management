@@ -1,5 +1,5 @@
 # Employee Management System
-https://wingz003.github.io/TeamBuilder-o-Luigi/
+https://wingz003.github.io/Luigis-Employee-Management/
 
 
 
@@ -21,7 +21,7 @@ This is a Team Profile Generator for the SMU coding bootcamp. This is a team bui
 ## Installation
 ### You will need to install the following dependencies prior to running the application:</br>
 
-Inquirer and  Jest.
+Inquirer and  Mysql2.
 
 ## Usage 
 ### Below are the following steps required to run this application:</br>
