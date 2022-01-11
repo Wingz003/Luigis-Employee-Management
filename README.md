@@ -6,7 +6,7 @@ https://wingz003.github.io/Luigis-Employee-Management/
 # Description
 This is a data management system that allows you to view, filter and manipulate data in a sql database by the use of Inquirer scripts.
 
-[![Watch the video](video/TeamBuilder.gif)
+[![Watch the video](video/ManagementSystem.gif)
 
 
 
@@ -26,21 +26,26 @@ Inquirer and  Mysql2.
 ## Usage 
 ### Below are the following steps required to run this application:</br>
 
-1. As the Manager, you will have to fill out your information in the inquirer prompts so that you can begin filling out your team.
+1. As soon as you input the command node index.js, a menu will pop up in the terminal with a series of options.
 
-![](img/Manager.png)
+![](img/menu.png)
 
-2. You will then be prompted to choose if youd like an engineer or an intern.
+2. You will  be able to view every table in the database by the use of inquirer prompts.
 
-![](img/ChooseEmployee.png)
+![](img/viewDepts.png)
+![](img/viewEmployees.png)
+![](img/viewRoles.png)
 
-3. You will then be prompted to fill out your employees information.
 
-![](img/Engineer.png)
+3.You will also be able to add Employees, Roles and Departments.
 
-4. File generator will then generate the html to create cards with the proper css and the information that you have put in will populate your   cards in the process.
+![](img/addEmployees.png)
+![](img/addRoles.png)
 
-![](img/TeamBuilder.png)
+4. **Updating roles** is also an option on this application!
+
+![](img/updateRole.png)
+![](img/updateRole2.png)
 
 ## Contributions</br>
 
