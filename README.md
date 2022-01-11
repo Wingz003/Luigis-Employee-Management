@@ -4,7 +4,7 @@ https://wingz003.github.io/Luigis-Employee-Management/
 
 
 # Description
-This is a Team Profile Generator for the SMU coding bootcamp. This is a team building application that guides you through a series of prompts using inquirer to generate a team.
+This is a data management system that allows you to view, filter and manipulate data in a sql database by the use of Inquirer scripts.
 
 [![Watch the video](video/TeamBuilder.gif)
 
